@@ -15,7 +15,7 @@ project(foo)
 option(WITH_FOO "Enable Foo optimization" ON)
 
 add_library(boo INTERFACE)
-target_include_directories(boo INTERFACE ${CMAKE_CURRENT_LIST_DIR})
+target_include_directories(boo INTERFACE "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}>")
 
 add_executable(baz main.cpp)
 target_link_libraries(baz PUBLIC boo)
